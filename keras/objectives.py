@@ -6,7 +6,10 @@ from . import backend as K
 def mean_squared_error(y_true, y_pred):
     return K.mean(K.square(y_pred - y_true), axis=-1)
 
-
+def custom_mean_squared_error(y_true, y_pred):
+    return mean_squared_error(y_true[0], y_pred[0])
+    
+    
 def mean_absolute_error(y_true, y_pred):
     return K.mean(K.abs(y_pred - y_true), axis=-1)
 
@@ -56,6 +59,7 @@ mae = MAE = mean_absolute_error
 mape = MAPE = mean_absolute_percentage_error
 msle = MSLE = mean_squared_logarithmic_error
 cosine = cosine_proximity
+custom_mse = custom_mean_squared_error
 
 from .utils.generic_utils import get_from_module
 def get(identifier):
